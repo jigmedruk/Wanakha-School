@@ -1,0 +1,27 @@
+
+{% extends 'base.html' %}
+{% block content%}
+  <div class="container">
+    <div class="jumbotron">
+      {% if user.is_authenticated %}
+      <h1>Welcome to Student Portal</h1>
+      <ul>
+        <li><a href="{% url 'studentinfo:create' %}">Upload Student Details</a></li>
+        <li><a href="{% url 'studentinfo:list' %}">Student List/ Search</a></li>
+      </ul>
+
+      {% else %}
+      <h1>Student Information Portal</h1>
+      <h3>Please <a class="btn btn-primary" href="{% url 'user_login' %}">Login</a> to access and upload student information </h3>
+
+      {% endif %}
+
+
+
+
+
+
+
+    </div>
+  </div>
+{% endblock %}

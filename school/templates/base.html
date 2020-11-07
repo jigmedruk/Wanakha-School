@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'bootstrap-4.5.3-dist/css/bootstrap.min.css' %}">
+    <title>student Info Portal</title>
+  </head>
+
+
+  <body>
+
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#006d77;" ><a class="navbar-brand" style="color:white;"><b>WCS</b></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                {% if user.is_authenticated %}
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item"><a class="nav-link" style="color:white;" class="nav-link" href="{% url 'admin:index' %}">Admin</a></li>
+                  <li class="nav-item active"><a style="color:white;"class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a></li>
+                  <li class="nav-item"><a style="color:white;" class="nav-link" href="{% url 'studentinfo:list' %}">Students List</a></li>
+                  <li class="nav-item"><a style="color:white;" class="nav-link" href="{% url 'studentinfo:create' %}">Create Profile</a></li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                  <li class="btn btn"><a class="btn btn-secondary" style="color:white;" class="nav-link" href="{% url 'change_password' %}">Change Password</a></li>
+                  <li class="btn btn"><a class="btn btn-primary" style="color:white;" class="nav-link" href="{% url 'user_logout' %}">Logout</a></li>
+                </ul>
+
+                {% else %}
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active"><a style="color:white;"class="nav-link" href="{% url 'index' %}">Home <span class="sr-only"></a></li>
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="btn btn-primary" style="color:white;" class="nav-link" href="{% url 'admin:index' %}">Admin</a></li>
+                </ul>
+                {% endif %}
+              </div>
+        </nav>
+    {% block content%}
+    {% endblock %}
+  </body>
+  <script src="{% static 'bootstrap-4.5.3-dist/js/bootstrap.min.js' %}"></script>
+
+
+</html>

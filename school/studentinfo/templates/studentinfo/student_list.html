@@ -1,0 +1,65 @@
+{% extends "studentinfo/studentinfo_base.html" %}
+
+{% block content %}
+
+
+<div class="container-fluid">
+
+  <div class="card card-body">
+    <h3 class="text-center">Students of Wanakha Central School</h3>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="card card-body">
+        <form method="GET">
+        {{myFilter.form}}
+        <button type="submit" class="btn btn-success">Search</button>
+      </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-body">
+    {% if student_list %}
+      <table class="table thead-dark">
+        <thead>
+          <th scope="col">Student Code</th>
+          <th scope="col">Name</th>
+          <th scope="col">Date of Birth</th>
+          <th scope="col">Class</th>
+          <th scope="col">Section</th>
+          <th scope="col">Father's Name</th>
+          <th scope="col">Permanent Adress</th>
+
+        </thead>
+
+        {% for acc in student_list %}
+          <tr>
+            <td scope="row"><a href="{{acc.id}}">{{acc.Student_Code}}</a></td>
+            <td scope="row">{{acc.First_Name}} {{acc.Middle_Name}} {{acc.Surname}}</td>
+            <td scope="row">{{acc.Date_of_Birth}}</td>
+            <td scope="row">{{acc.Class}}</td>
+            <td scope="row">{{acc.Section}}</td>
+            <td scope="row">{{acc.Name_of_Father}}</td>
+            <td scope="row">{{acc.Village}}, {{acc.Geog}}, {{acc.Dzongkhag}}</td>
+
+
+          </tr>
+        {% endfor %}
+
+      </table>
+      {% else %}
+        <p>No Excess Records </p>
+      {% endif %}
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+{% endblock %}

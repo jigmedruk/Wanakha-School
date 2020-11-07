@@ -1,0 +1,27 @@
+{% extends "studentinfo/studentinfo_base.html" %}
+
+{% block content %}
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Delete {{studentdetails.First_Name}} {{studentdetails.Middle_Name}} {{studentdetails.Surname}}...?</h1>
+    <form  method="post">
+      {% csrf_token %}
+      <div class="row">
+        <ul class="mr-auto">
+          <a class="btn btn-primary" href="{% url 'studentinfo:detail' pk=studentdetails.pk %}">Cancel</a>
+        </ul>
+
+        <ul class="ml-auto">
+          <input type="submit" class="btn btn-danger" value="Delete">
+        </ul>
+
+
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

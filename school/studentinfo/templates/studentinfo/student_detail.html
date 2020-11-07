@@ -1,0 +1,102 @@
+{% extends "studentinfo/studentinfo_base.html" %}
+
+{% block content %}
+
+<div class="container">
+  <div class="jumbotron">
+    <h3 class="text-center">{{student_detail.First_Name}} {{student_detail.Middle_Name}} {{student_detail.Surname}}
+  </h3>
+        <table  class="table table-bordered table-hover">
+          <tr>
+            <td>
+              <table>
+                <tr>
+                  <th>Student_Code</th>
+                  <td>{{student_detail.Student_Code}}</td>
+                </tr>
+                <tr>
+                  <th>Date of Birth</th>
+                  <td>{{student_detail.Date_of_Birth}}</td>
+                </tr>
+                <tr>
+                  <th>Blood Group</th>
+                  <td>{{student_detail.Blood_Group}}</td>
+                </tr>
+                <tr>
+                  <th>Gender</th>
+                  <td>{{student_detail.Gender}}</td>
+                </tr>
+                <tr>
+                  <th>Current Class/ Section</th>
+                  <td>{{student_detail.Class}}  {{student_detail.Section}}</td>
+                </tr>
+              </table>
+            </td>
+            <td>  {% if student_detail.Profile_photo %}
+               <img class="rounded mx-auto d-block" src="{{student_detail.Profile_photo.url}}" height="250" alt="No Image"/>
+               {% endif %}
+
+             </td>
+        </table>
+      </td>
+        <table  class="table table-bordered table-hover">
+          <tr>
+            <th>Present Address:</th>
+            <td>{{student_detail.Present_Adress}}</td>
+          </tr>
+          <tr>
+            <th>Permanent Adress</th>
+          </tr>
+          <tr>
+            <th><i>Village</i></th>
+            <td>{{student_detail.Village}}</td>
+          </tr>
+          <tr>
+            <th><i>Geog</i></th>
+            <td>{{student_detail.Geog}}</td>
+          </tr>
+          <tr>
+            <th><i>District</i></th>
+            <td>{{student_detail.Dzongkhag}}</td>
+          </tr>
+
+          <tr>
+            <th>Father's Name</th>
+            <td>{{student_detail.Name_of_Father}}</td>
+            <th>Contact No</th>
+            <td>{{student_detail.Contact_No1}}</td>
+          </tr>
+
+          <tr>
+            <th>Mother's Name</th>
+            <td>{{student_detail.Name_of_Mother}} </td>
+            <th>Contact No</th>
+            <td>{{student_detail.Contact_No2}}</td>
+          </tr>
+        </table>
+
+
+
+
+  </div>
+</div>
+
+
+
+<div class="container">
+  <div class="row ">
+    <ul class=" mr-auto">
+      <a class="btn btn-warning " href="{% url 'studentinfo:update' pk=student_detail.pk %}">Update</a>
+    </ul>
+
+    <ul class="ml-auto">
+      <a class="btn btn-danger" href="{% url 'studentinfo:delete' pk=student_detail.pk %}">Delete Profile</a>
+    </ul>
+    <p></p>
+
+  </div>
+</div>
+
+
+
+{% endblock %}
